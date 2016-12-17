@@ -1,0 +1,51 @@
+{{define "base"}}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+    <title>イベントpt計算機</title>
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="text-muted">イベントpt計算機</h3>
+			<div class="row">
+        <div class="col-lg-6">
+          <h2>設定</h2>
+          <form class="form-horizontal" method="post" action="/calculate">
+            <div class="form-group">
+              <label for="name" class="control-label col-xs-3">目標ポイント</label>
+              <div class="col-xs-5">
+                <input type="text" name="point" class="form-control input-sm">
+              </div>
+            </div>
+            <label class="control-label col-xs-3">イベント倍率</label> 
+            <div class="col-lg-9">
+              <label class="radio-inline">
+                <input type="radio" name="event" value="1" /> 1倍
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="event" value="2" /> 2倍
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="event" value="4" /> 4倍
+              </label>
+            </div>
+            <label class="control-label col-xs-3">消費スタミナ</label>
+            <div class="col-lg-9">
+              <label class="radio-inline">
+                <input type="radio" name="normal" value="1" /> 1倍
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="normal" value="2" /> 2倍
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          <h2>結果</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{{end}}
