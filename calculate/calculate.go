@@ -49,3 +49,23 @@ func searchSolution(x, y float64, point int64, p PlayStyle) (int64, int64) {
 		}
 	}
 }
+
+func TotalStamina(normal_times int64, p PlayStyle) int64 {
+	return 19 * p.Normal * normal_times
+}
+
+func TotalPlayTimes(normal_times, event_times int64) int64 {
+	return normal_times + event_times
+}
+
+func TotalPoint(normal_times, event_times int64, p PlayStyle) int64 {
+	return normal_times * 53 + event_times * 320 * p.Special
+}
+
+func TotalTime(playtimes int64) int64 {
+	return playtimes * 3
+}
+
+func TotalTimeToHour(totalTime int64) float64 {
+	return float64(totalTime)/60.0
+}

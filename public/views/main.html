@@ -45,14 +45,33 @@
           </form>
         </div>
         <div class="col-lg-6">
-          <h2>結果</h2>
-        </div>
-        <div class="col-lg-6">
           <p>検索条件</p>
           <div class="col-xs-4">イベント倍率: {{ .Event }}倍</div>
           <div class="col-xs-4">消費スタミナ: {{ .Normal }}倍</div>
+          <div class="col-xs-4">目標ポイント: {{ .Point }}pt</div>
         </div>
-      </div>
+        <div class="col-lg-6">
+          <h2>結果</h2>
+          <table class="table">
+            <tr>
+              <td align="center">総ポイント</td>
+              <td align="center">{{ .Total_point  }}</td>
+            </tr>
+            <tr>
+              <td align="center">総消費スタミナ</td>
+              <td align="center">{{ .Total_stamina }}</td>
+            </tr>
+            <tr>
+              <td align="center">総プレイ曲数</td>
+              <td align="center">{{ .Total_play_time }}</td>
+            </tr>
+            <tr>
+              <td align="center">総プレイ時間</td>
+              <td align="center">{{ .Total_hour }}</td>
+            </tr>
+          </table>
+        </div>
+     </div>
     </div>
   </body>
 </html>

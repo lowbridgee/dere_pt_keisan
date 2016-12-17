@@ -28,6 +28,11 @@ type Result struct {
 	Normal int64
 	Normal_times int64
 	Event_times int64
+	Total_time int64
+	Total_hour float64
+	Total_point int64
+	Total_stamina int64
+	Total_play_time int64
 }
 
 func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
@@ -74,8 +79,25 @@ func calculate(c echo.Context) error {
 	p := cal.PlayStyle{Normal: int64(normal), Special: int64(event)}
 
 	x, y := cal.Point2Time(int64(point), p)
+	
+	totalPoint := cal.TotalPoint(y,x,p)
+	totalStamina := cal.TotalStamina(y,p)
+	totalPlayTimes := x + y
+	totalTime := cal.TotalTime(totalPlayTimes)
+	totalHour := cal.TotalTimeToHour(totalTime)
 
-	e := Result{Point: int64(point), Event: int64(event), Normal: int64(normal),Event_times: x, Normal_times: y}
+	e := Result{
+		Point: int64(point),
+		Event: int64(event),
+		Normal: int64(normal),
+		Event_times: x,
+		Normal_times: y,
+		Total_time: totalPoint,
+		Total_hour: totalHour,
+		Total_point: totalPoint,
+		Total_stamina: totalStamina,
+		Total_play_time: totalPlayTimes,
+	}
 
 	return c.Render(http.StatusOK, "base", e)
 }
