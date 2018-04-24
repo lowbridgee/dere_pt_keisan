@@ -23,11 +23,11 @@ func requireItem(x, y int64, p PlayStyle) bool {
 	return false
 }
 
-func requirePoint(x,y,point int64, p PlayStyle) bool {
-	if 53*y + 320*p.Special*x > point {
+func requirePoint(x, y, point int64, p PlayStyle) bool {
+	if 53*y+320*p.Special*x > point {
 		return true
 	}
-		return false
+	return false
 }
 
 func searchSolution(x, y float64, point int64, p PlayStyle) (int64, int64) {
@@ -36,15 +36,15 @@ func searchSolution(x, y float64, point int64, p PlayStyle) (int64, int64) {
 
 	y_up := int64(math.Ceil(y))
 
-	if ( requireItem(x_down, y_up, p) && requirePoint(x_down,y_up, point, p) ) {
+	if requireItem(x_down, y_up, p) && requirePoint(x_down, y_up, point, p) {
 		return x_down, y_up
 	}
-	for ;; {
+	for {
 		y_up += 1
-		if (requireItem(x_down, y_up, p) && requirePoint(x_down,y_up, point, p) ){
+		if requireItem(x_down, y_up, p) && requirePoint(x_down, y_up, point, p) {
 			return x_down, y_up
 		}
-		if (requireItem(x_up, y_up-1, p) && requirePoint(x_down,y_up, point, p) ){
+		if requireItem(x_up, y_up-1, p) && requirePoint(x_down, y_up, point, p) {
 			return x_up, y_up - 1
 		}
 	}
@@ -59,7 +59,7 @@ func TotalPlayTimes(normal_times, event_times int64) int64 {
 }
 
 func TotalPoint(normal_times, event_times int64, p PlayStyle) int64 {
-	return normal_times * 53 + event_times * 320 * p.Special
+	return normal_times*53 + event_times*320*p.Special
 }
 
 func TotalTime(playtimes int64) int64 {
@@ -67,5 +67,5 @@ func TotalTime(playtimes int64) int64 {
 }
 
 func TotalTimeToHour(totalTime int64) float64 {
-	return float64(totalTime)/60.0
+	return float64(totalTime) / 60.0
 }
